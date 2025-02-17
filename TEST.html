@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Round-Robin Links</title>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    a {
+      background-color: red;
+      color: white;
+      padding: 20px 40px;
+      text-decoration: none;
+      border-radius: 15px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <a href="#" id="rotating-link">почати</a>
+
+  <script>
+    const target = [
+      'https://docs.google.com/forms/d/1A1udyRfKfZs0XOtiL-yGcv8mltOqB1nwTVpM5NODQC4',
+      'https://docs.google.com/forms/d/1jN8SQt3kXWTiRTez9pR45eS6_RrfjtJvdowEPNJw9ik',
+      'https://docs.google.com/forms/d/1Zzl81fbBnWfFZBqSEdYFSHDGLrq_R0INl38l7GccUOs',
+        'https://docs.google.com/forms/d/12j_EtsnUu5AJWTX7m4dxBAqnTyyyVyBoin6Ko5CAq3A',
+      'https://docs.google.com/forms/d/1jTS_soLD8AUfhhbQz8QFjK6rTmGHxDZZwg7FKxnb0ZM'
+    ];
+
+    document.getElementById('rotating-link').addEventListener('click', function(event) {
+      event.preventDefault();
+
+      let index = parseInt(localStorage.getItem('fileIndex')) || 0;
+      window.open(target[index], '_blank');
+
+      index = (index + 1) % target.length;
+      localStorage.setItem('fileIndex', index);
+    });
+  </script>
+</body>
+</html>
